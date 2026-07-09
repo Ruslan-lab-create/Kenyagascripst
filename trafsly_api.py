@@ -55,7 +55,9 @@ async def get_sponsors(
         raise TrafslyError(f"HTTP {resp.status_code}: {resp.text}")
 
     data = resp.json()
-    return data.get("sponsors", [])
+    sponsors = data.get("sponsors", [])
+    logger.info("Trafsly get-sponsors raw response for user %s: %s", user_id, data)
+    return sponsors
 
 
 async def confirm_subscription(user_id: int, ads_id: int) -> dict:
