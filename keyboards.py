@@ -36,8 +36,13 @@ def short_link_for(code: str) -> str:
 
 def sponsors_kb(sponsors: list[dict], script_code: str) -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    for sp in sponsors:
-        kb.button(text=f"📢 {sp['title']}", url=sp["link"])
+        for sp in sponsors:
+        title = sp.get("title") or sp.get("name") or "Канал"
+        link = sp.get("link") or sp.get("url")
+        if not link:
+            continue
+        kb.button(text=f"📢 {title}", url=link)
+
     kb.button(text="✅ Я подписался", callback_data=f"check:{script_code}")
     kb.adjust(1)
     return kb.as_markup()
