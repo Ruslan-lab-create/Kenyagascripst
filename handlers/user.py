@@ -7,7 +7,7 @@ import database as db
 import keyboards as kb
 import trafsly_api
 
-logger = logging.getLogger(__name__)з
+logger = logging.getLogger(__name__)
 router = Router()
 
 
