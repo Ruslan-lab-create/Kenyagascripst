@@ -7,7 +7,7 @@ import database as db
 import keyboards as kb
 import trafsly_api
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)з
 router = Router()
 
 
@@ -115,5 +115,3 @@ async def check_subscription_cb(call: CallbackQuery) -> None:
 
     await db.clear_pending_sponsors(user_id, script_code)
     await call.answer("Все подписки подтверждены ✅")
-    await call.message.edit_text("✅ Все задания выполнены!")
-    await _send_script(call, script)
